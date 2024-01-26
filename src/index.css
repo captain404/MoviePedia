@@ -14,9 +14,10 @@
 }
 
 h1 {
-  font-size: 30px;
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 60px;
+  font-family: 'Times New Roman', Times, serif;
   text-align: center;
+  font-weight: bold;
 }
 
 p {
@@ -25,13 +26,25 @@ p {
   margin-bottom: 10px;
   margin-top: 10px;
   text-align: center;
-  text-shadow: 0 1px 1px #fff;
+  font-weight: bold;
 }
 
-input, button {
-  width: 300px;
+input {
+  border-radius: 5px;
+}
+
+input, button{
+  width: 400px;
+  height: 30px;
   margin: 0 auto;
   display: block;
+  margin-top: 10px;
+}
+
+button:hover {
+  font-size: 100%;
+  color: rgb(255, 255, 255);
+  background-color: brown;
 }
 
 
