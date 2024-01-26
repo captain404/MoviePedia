@@ -1,0 +1,37 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 50px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.726);
+  color: #fff;
+}
+
+h1 {
+  font-size: 30px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  text-align: center;
+}
+
+p {
+  color: #ffffff;
+  font-family: "Great Vibes", fantasy; font-size: 15px; line-height: 20px; font-weight: normal;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+  text-shadow: 0 1px 1px #fff;
+}
+
+input, button {
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+
