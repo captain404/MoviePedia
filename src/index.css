@@ -1,50 +1,597 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+body {
+  background-color: #f4f4f4; /* Light gray background for the page */
+  color: #333; /* Default text color */
+  line-height: 1.6;
 }
 
 .container {
   max-width: 1200px;
-  padding: 50px;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.726);
-  color: #fff;
+  padding: 40px; /* Adjusted padding */
+  margin: 30px auto; /* Add some margin from top/bottom */
+  background-color: #ffffff; /* White background for container */
+  color: #333; /* Text color inside container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
 }
 
 h1 {
-  font-size: 60px;
-  font-family: 'Times New Roman', Times, serif;
+  font-size: 48px; /* Slightly reduced font size */
+  font-family: 'Montserrat', sans-serif; /* Modern heading font */
   text-align: center;
-  font-weight: bold;
+  font-weight: 700; /* Bolder */
+  color: #2c3e50; /* Dark blue-gray color */
+  margin-bottom: 30px; /* Spacing below heading */
 }
 
 p {
-  color: #ffffff;
-  font-family: "Great Vibes", fantasy; font-size: 15px; line-height: 20px; font-weight: normal;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  color: #555; /* Darker gray for paragraphs */
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px; /* Adjusted font size */
+  line-height: 1.8; /* Improved line height */
+  margin-bottom: 15px;
+  margin-top: 15px;
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; Removed bold by default, can be added specifically */
 }
 
 input {
   border-radius: 5px;
+  border: 1px solid #ddd; /* Softer border */
+  padding: 10px; /* Add padding inside input */
 }
 
-input, button{
-  width: 400px;
-  height: 30px;
-  margin: 0 auto;
+input, button {
+  width: 100%; /* Make them full width within their parent */
+  max-width: 400px; /* But limit max width */
+  height: 40px; /* Adjusted height */
+  margin: 15px auto; /* Adjusted margin */
   display: block;
-  margin-top: 10px;
+  font-size: 16px; /* Consistent font size */
+}
+
+button {
+  background-color: #3498db; /* A nice blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 button:hover {
-  font-size: 100%;
-  color: rgb(255, 255, 255);
-  background-color: brown;
+  background-color: #2980b9; /* Darker blue on hover */
+  /* font-size: 100%; Removed as it can cause layout shifts */
+  /* color: rgb(255, 255, 255); Already white */
+  /* background-color: brown; Replaced with a more modern color */
+}
+
+/* MovieBox specific styles */
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Spacing between cards */
+  padding: 20px 0; /* Padding top/bottom */
+}
+
+/* MovieCard specific styles */
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  object-fit: cover; /* Ensure images cover the area nicely */
+  min-height: 300px; /* Minimum height for image consistency */
+}
+
+.card h2 {
+  font-size: 18px; /* Title font size */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+  text-align: center; /* Center align paragraph text in card */
+}
+
+/* Search component specific styles */
+.inputBox {
+  display: flex; /* Align input and button nicely */
+  gap: 10px; /* Space between input and button */
+  align-items: center;
+  margin-bottom: 30px; /* Space below search box */
+  max-width: 500px; /* Max width for search area */
+  margin-left: auto; /* Center the search box */
+  margin-right: auto; /* Center the search box */
+}
+
+.inputBox input {
+  flex-grow: 1; /* Input takes available space */
+  margin: 0; /* Remove default margins from global input style */
+}
+
+.inputBox button {
+  margin: 0; /* Remove default margins from global button style */
+  width: auto; /* Adjust width based on content */
+  padding: 10px 20px; /* Add some padding to button */
+}
+
+/* Error message styling */
+.wrapper > div:empty + p, /* Targeting the error paragraph when movies array is empty */
+.wrapper > p { /* General error paragraph styling if it's directly under wrapper */
+  color: #e74c3c; /* Red color for errors */
+  font-size: 16px;
+  text-align: center;
+  padding: 10px;
+  background-color: #fdd; /* Light pink background */
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+  grid-column: 1 / -1; /* Make error span full width of the grid */
+}
+
+/* Style for the paragraph showing "Please enter something..." or "No results found" */
+/* This requires knowing how the error is rendered in MovieBox.jsx */
+/* Assuming the error is a direct child paragraph of .wrapper or the first element when movies is empty */
+.wrapper > p[style*="color: red"], /* If inline styles are used for error */
+.wrapper > div[style*="color: red"] { /* If error is wrapped in a div with inline style */
+  color: #e74c3c !important; /* Red color for errors - important to override potential inline styles */
+  font-size: 16px;
+  text-align: center;
+  padding: 10px;
+  background-color: #fdd; /* Light pink background */
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+  margin-top: 15px;
+  grid-column: 1 / -1; /* Make error span full width of the grid if applicable */
+}
+
+/* Let's try a more specific selector for the error message based on MovieBox structure */
+/* The error in MovieBox is a state variable rendered directly.
+   When `error` has text, it's rendered. We need a way to style this.
+   Let's assume it's rendered as a sibling to Search and the movie cards container.
+   If it's a direct text node, CSS cannot style it directly.
+   It would be better if the error was wrapped in a <p> or <div> with a class.
+   For now, I'll try to target it assuming it might be a <p> tag.
+   The previous .wrapper > p rule might catch it if it is indeed a paragraph.
+*/
+
+/* Refined error styling: Assuming the error message is rendered as a direct child of .wrapper */
+/* And it's the only paragraph or a paragraph that we want to style this way */
+.wrapper > [className^="error"], /* If it has a class starting with error */
+.wrapper > .error-message { /* Or a specific class like error-message */
+    color: #e74c3c;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    background-color: #fdecea; /* Softer pink */
+    border: 1px solid #e74c3c;
+    border-radius: 5px;
+    margin: 15px 0;
+    grid-column: 1 / -1; /* Span full width in grid */
+}
+/* Since the error in MovieBox is just `{error}`, it will be rendered as a text node.
+   To style it, it MUST be wrapped in an element. E.g., <p className="error-text">{error}</p>
+   I will proceed assuming this change will be made to MovieBox.jsx, or the existing p styling might catch it if error is simple text.
+   The most robust way is to add a class to the error message element in JSX.
+   I will add a general style that *might* catch it if it's a <p> tag.
+*/
+.wrapper > p:not([class]) { /* Targeting a paragraph child of wrapper without any class - risky */
+    color: #e74c3c;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    background-color: #fdecea;
+    border: 1px solid #e74c3c;
+    border-radius: 5px;
+    margin: 15px 0;
+    grid-column: 1 / -1;
+}
+
+/* Similar Movies Section Styles */
+.similar-movies-section {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee; /* Separator line */
+}
+
+.similar-movies-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left; /* Align heading to the left */
+}
+
+.similar-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller cards for similar movies */
+  gap: 10px;
+}
+
+.similar-movie-card {
+  background-color: #f9f9f9; /* Slightly different background for distinction */
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px; /* Smaller font for similar movie titles */
+}
+
+.similar-movie-card img {
+  max-width: 100%;
+  height: 150px; /* Fixed height for similar movie posters */
+  object-fit: cover;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.similar-movie-card p {
+  font-size: 12px; /* Ensure movie title/year is small */
+  color: #555;
+  margin-bottom: 0; /* Remove extra margin if any */
+  line-height: 1.3;
+}
+
+/* Error message for similar movies section */
+.error-message-similar {
+  color: #888; /* Less prominent error color for similar movies */
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+/* Add to List Button Styles */
+.add-to-list-btn {
+  background-color: #27ae60; /* Green color for add */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  display: block; /* Make it a block element */
+  width: calc(100% - 30px); /* Full width minus padding of parent card */
+  margin: 15px auto 10px; /* Center it and add some margin */
+  box-sizing: border-box; /* Ensure padding doesn't make it overflow */
+}
+
+.add-to-list-btn:hover {
+  background-color: #229954; /* Darker green on hover */
+}
+
+.add-to-list-btn.added {
+  background-color: #7f8c8d; /* Gray color when added */
+  color: #f0f0f0;
+  cursor: not-allowed; /* Indicate it's not clickable */
+  opacity: 0.8;
+}
+
+.add-to-list-btn.added:hover {
+  background-color: #7f8c8d; /* Keep same color on hover when added */
+}
+
+/* Navigation Bar Styles */
+.main-nav {
+  background-color: #2c3e50; /* Dark blue-gray, matches h1 */
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px; /* Space between nav and main content */
+}
+
+.main-nav .nav-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ecf0f1; /* Light gray/white */
+  text-decoration: none;
+}
+
+.main-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.main-nav .nav-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav .nav-links a:hover,
+.main-nav .nav-links a.active { /* For active link styling if using NavLink */
+  background-color: #3498db; /* Blue from buttons */
+  color: #fff;
+}
+
+.main-nav .nav-button,
+.main-nav .logout-nav-btn { /* Ensure logout button in nav has similar base style */
+  background-color: #e74c3c; /* Red for logout/action */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main-nav .nav-button:hover,
+.main-nav .logout-nav-btn:hover {
+  background-color: #c0392b; /* Darker red */
+}
+
+/* Main Content Area - ensure it's below nav */
+.main-content {
+  padding-top: 0; /* Remove this if nav is not fixed/absolute, or adjust as needed */
 }
 
 
+/* Authentication Form Styles */
+.auth-form-container {
+  max-width: 450px;
+  margin: 40px auto; /* More margin for auth pages */
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50; /* Same as h1 */
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] { /* Assuming email might be used */
+  width: 100%;
+  padding: 12px; /* Larger padding for auth inputs */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus {
+  outline: none;
+  border-color: #3498db; /* Blue focus */
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.auth-button { /* Shared by Login, Signup, and Profile logout */
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db; /* Primary button blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #2980b9; /* Darker blue */
+}
+
+.auth-form-container .error-message { /* Styling for errors inside auth forms */
+  background-color: #fdd;
+  color: #c0392b;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+  border: 1px solid #e74c3c;
+}
+
+.switch-auth-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.switch-auth-link a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.switch-auth-link a:hover {
+  text-decoration: underline;
+}
+
+.auth-disclaimer {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #7f8c8d; /* Gray color */
+}
+
+/* Profile Page Styles */
+.profile-container { /* Reuses .container styles for padding and max-width */
+  background-color: #fff; /* Ensure white background if not default */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 30px; /* Add some margin if needed */
+}
+
+.profile-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profile-details {
+  margin-bottom: 25px;
+}
+
+.profile-details p {
+  font-size: 18px; /* Larger text for profile details */
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left; /* Align profile details to left */
+}
+
+.profile-details strong {
+  color: #2c3e50;
+}
+
+.profile-details h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #34495e;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.logout-button { /* Specific if needed, but .auth-button should cover it */
+  background-color: #e74c3c; /* Red for logout */
+  margin-top: 20px; /* Add some space above logout button on profile page */
+}
+
+.logout-button:hover {
+  background-color: #c0392b; /* Darker red */
+}
+
+.delete-account-button {
+  background-color: #d9534f; /* A slightly different, distinct red for delete */
+  color: white;
+  margin-top: 10px; /* Space from the logout button */
+}
+
+.delete-account-button:hover {
+  background-color: #c9302c; /* Darker shade of delete red */
+}
+
+/* App container to manage overall layout if nav is fixed/sticky */
+.app-container {
+  /* If using a fixed/sticky nav, add padding-top here to avoid content overlap */
+  /* Example: padding-top: 80px; where 80px is nav height */
+}
+
+/* Styles for Listed Movies in Profile Page */
+.listed-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid for smaller items */
+  gap: 15px; /* Gap between movie items */
+  margin-top: 15px;
+  margin-bottom: 25px; /* Space before profile actions */
+}
+
+.listed-movie-item {
+  background-color: #f9f9f9; /* Light background for each item */
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* Stack image and details vertically */
+  align-items: center; /* Center content */
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.listed-movie-poster {
+  width: 100%; /* Make image responsive within its container */
+  max-width: 130px; /* Max width for poster */
+  height: auto;
+  min-height: 195px; /* Minimum height to maintain some consistency, adjust as needed */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.listed-movie-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Allow details to take available space if needed */
+}
+
+.listed-movie-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0; /* Remove default margins from h5 */
+  line-height: 1.3;
+}
+
+.empty-list-message {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.profile-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+}
+
+/* Ensure auth buttons within profile-actions are full width */
+.profile-actions .auth-button {
+  width: 100%;
+}
