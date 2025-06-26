@@ -27,12 +27,22 @@ MoviePedia is a web application designed for searching movies and managing user-
 *   **Development Tooling:** Vite
 
 ## Screenshots
+*   *Homepage / Movie Search View*
 
-*(Placeholder: Add screenshots of the application here. For example:*
-*   *Homepage / Movie Search View)*
-*   *Movie Card Detail)*
-*   *User Profile Page with Watchlist)*
-*   *Login/Signup Forms)*
+<img src="screenshots/Screenshot From 2025-06-26 17-50-41.png" width="500">
+
+*   *Movie Card Detail*
+
+<img src="screenshots/Screenshot From 2025-06-26 17-51-20.png" width="500">
+
+*   *User Profile Page with Watchlist*
+
+<img src="screenshots/Screenshot From 2025-06-26 17-54-31.png" width="500">
+
+*   *Login/Signup Forms*
+
+<img src="screenshots/Screenshot From 2025-06-26 17-50-48.png" width="500">
+
 
 ## Setup and Running the Application
 
