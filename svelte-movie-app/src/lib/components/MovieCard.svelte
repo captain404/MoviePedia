@@ -100,7 +100,5 @@
   .similar-movie-card img {
      min-height: 150px; /* ensure placeholder and image have same height */
   }
-   .card img {
-    min-height: 300px; /* ensure placeholder and image have same height */
-  }
+  /* .card img min-height is now handled by global app.css */
 </style>

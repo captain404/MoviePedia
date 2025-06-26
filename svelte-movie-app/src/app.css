@@ -8,9 +8,15 @@
 }
 
 body {
-  background-color: #f4f4f4; /* Light gray background for the page */
+  background-color: #f4f4f4; /* Fallback color */
   color: #333; /* Default text color */
   line-height: 1.6;
+  background-image: url('/images/image1.jpeg'); /* Path relative to static folder */
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* Keeps the background fixed during scroll */
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Ensure body takes at least full viewport height */
 }
 
 .container {
@@ -80,10 +86,13 @@ button:hover {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
   gap: 20px; /* Spacing between cards */
   padding: 20px 0; /* Padding top/bottom */
+  align-items: start; /* Prevent items from stretching vertically */
 }
 
 /* MovieCard specific styles */
 .card {
+  display: flex; /* Added for better content flow control */
+  flex-direction: column; /* Added for vertical content stacking */
   background-color: #fff;
   border: 1px solid #e0e0e0; /* Light border */
   border-radius: 8px;
@@ -169,12 +178,12 @@ button:hover {
   font-weight: 600;
   color: #333;
   margin-bottom: 10px;
-  text-align: left; /* Align heading to the left */
+  /* text-align will be handled by component-specific style or default to inherited */
 }
 
 .similar-movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller cards for similar movies */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Increased min width */
   gap: 10px;
 }
 
