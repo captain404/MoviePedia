@@ -27,7 +27,6 @@ MoviePedia is a web application designed for searching movies and managing user-
 *   **Development Tooling:** Vite
 
 ## Screenshots
-
 *   *Homepage / Movie Search View*
 
 <img src="screenshots/Screenshot From 2025-06-26 17-50-41.png" width="500">
@@ -43,6 +42,7 @@ MoviePedia is a web application designed for searching movies and managing user-
 *   *Login/Signup Forms*
 
 <img src="screenshots/Screenshot From 2025-06-26 17-50-48.png" width="500">
+
 
 ## Setup and Running the Application
 
